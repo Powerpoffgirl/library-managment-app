@@ -21,7 +21,7 @@ const BookModel = require("./models/BookModel");
 // variables
 PORT = process.env.PORT || 8000;
 const app = express();
-const MONGO_URI = `mongodb+srv://emailjyotisingh13:BYlqE2fM976e745E@cluster0.3d1lybe.mongodb.net/marchToDoApp`;
+const MONGO_URI = `mongodb+srv://emailjyotisingh13:BYlqE2fM976e745E@cluster0.3d1lybe.mongodb.net/marchbookApp`;
 const saltRound = 11;
 
 app.set("view engine", "ejs");
@@ -284,9 +284,7 @@ app.post("/resendVerificationMail", async (req, res) => {
   }
 });
 
-app.post("/forgotPassword", async (req, res) => {
-  
-});
+app.post("/forgotPassword", async (req, res) => {});
 
 app.post("/logout_from_all_devices", isAuth, async (req, res) => {
   const username = req.session.user.username;
