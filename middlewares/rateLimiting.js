@@ -24,13 +24,13 @@ const rateLimiting = async (req, res, next) => {
   //   console.log(previousAccessTime);
   //   console.log(currentTime);
 
-  // if (currentTime - previousAccessTime < 2000) {
-  //   console.log("here");
-  //   return res.send({
-  //     status: 401,
-  //     message: "Too many request, Please try after some time",
-  //   });
-  // }
+  if (currentTime - previousAccessTime < 2000) {
+    console.log("here");
+    return res.send({
+      status: 401,
+      message: "Too many request, Please try after some time",
+    });
+  }
   //allow the person to make request but before that update the time to latest
   try {
     await AccessModel.findOneAndUpdate(
