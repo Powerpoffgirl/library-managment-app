@@ -1,6 +1,5 @@
 const isAuth = (req, res, next) => {
   if (req.session.isAuth) {
-    console.log("Authmiddleware");
     next();
   } else {
     return res.send({

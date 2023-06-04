@@ -263,7 +263,9 @@ app.post("/resendVerificationMail", async (req, res) => {
   console.log(req.body);
   const { loginId } = req.body;
   if (validator.isEmail(loginId)) {
+    //here i create token for 2fa
     const token = generateJWTToken(loginId);
+    // console.log(token);
     try {
       sendVerificationToken({ loginId, token });
       return res.status(200).redirect("/login");
@@ -275,6 +277,10 @@ app.post("/resendVerificationMail", async (req, res) => {
         error: error,
       });
     }
+  } else {
+    return res.send(
+      `<center><h2>!!<br>(-----Please provide a valid email address-----)</h2></center>`
+    );
   }
 });
 
@@ -314,23 +320,23 @@ app.post("/create-item", isAuth, rateLimiting, async (req, res) => {
   console.log(bookTitle);
 
   // Data validation
-  // if (!bookTitle) {
-  //   return res.send({
-  //     status: 400,
-  //     message: "Book is empty",
-  //   });
-  // } else if (typeof bookTitle !== "string") {
-  //   return res.send({
-  //     status: 400,
-  //     message: "Invalid book format",
-  //   });
-  // } else if (bookTitle.length > 100) {
-  //   return res.send({
-  //     status: 400,
-  //     message:
-  //       "Invalid book length, it should be in the range of 3 to 100 characters.",
-  //   });
-  // }
+  if (!bookTitle) {
+    return res.send({
+      status: 400,
+      message: "Book is empty",
+    });
+  } else if (typeof bookTitle !== "string") {
+    return res.send({
+      status: 400,
+      message: "Invalid book format",
+    });
+  } else if (bookTitle.length > 100) {
+    return res.send({
+      status: 400,
+      message:
+        "Invalid book length, it should be in the range of 3 to 100 characters.",
+    });
+  }
   // initialize book schema and store it in DB
   const book = new BookModel({
     bookTitle: bookTitle,
@@ -343,11 +349,7 @@ app.post("/create-item", isAuth, rateLimiting, async (req, res) => {
   try {
     const bookDb = await book.save();
     console.log(book);
-    return res.send({
-      status: 201,
-      message: "Book created successfully",
-      data: bookDb,
-    });
+    return res.redirect("dashboard");
   } catch (error) {
     return res.send({
       status: 500,
