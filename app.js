@@ -25,6 +25,7 @@ const MONGO_URI = `mongodb+srv://emailjyotisingh13:BYlqE2fM976e745E@cluster0.3d1
 const saltRound = 11;
 
 app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, '..', 'views'));
 
 // DB connection
 mongoose
