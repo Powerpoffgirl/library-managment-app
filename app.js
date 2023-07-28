@@ -19,9 +19,9 @@ const userSchema = require("./userSchema");
 const BookModel = require("./models/BookModel");
 
 // variables
-PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 const app = express();
-const MONGO_URI = `mongodb+srv://emailjyotisingh13:BYlqE2fM976e745E@cluster0.3d1lybe.mongodb.net/marchbookApp`;
+const MONGO_URI = process.env.MONGO_URI;
 const saltRound = 11;
 
 app.set("view engine", "ejs");
