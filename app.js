@@ -1,7 +1,7 @@
 const express = require("express");
 const clc = require("cli-color");
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
 const validator = require("validator");
 const session = require("express-session");
 const mongoDbSession = require("connect-mongodb-session")(session);
@@ -100,7 +100,7 @@ app.post("/register", async (req, res) => {
     }
 
     //hash the password using bcypt
-    const hashPassword = await bcrypt.hash(password, saltRound);
+    const hashPassword = await bcryptjs.hash(password, saltRound);
 
     const user = new userSchema({
       name: name,
@@ -206,8 +206,8 @@ app.post("/login", async (req, res) => {
       });
     }
 
-    //password compare bcrypt.compare
-    const isMatch = await bcrypt.compare(password, userDb.password);
+    //password compare bcryptjs.compare
+    const isMatch = await bcryptjs.compare(password, userDb.password);
 
     if (!isMatch) {
       return res.send({
