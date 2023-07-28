@@ -65,7 +65,7 @@ app.get("/registration", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  return res.render("login");
+  return res.render("./views/login");
 });
 
 // MVC STURCTURE
