@@ -1,63 +1,70 @@
-<!DOCTYPE html>   
-<html>   
-<head>  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<title> Change password</title>  
-<style>   
-Body {  
-  font-family: Calibri, Helvetica, sans-serif;  
-  background-color: pink;  
-}  
-button {   
-       background-color: #4CAF50;   
-       width: 100%;  
-        color: orange;   
-        padding: 15px;   
-        margin: 10px 0px;   
-        border: none;   
-        cursor: pointer;   
-         }   
- form {   
-        border: 3px solid #f1f1f1;   
-    }   
- input[type=text], input[type=password] {   
-        width: 100%;   
-        margin: 8px 0;  
-        padding: 12px 20px;   
-        display: inline-block;   
-        border: 2px solid green;   
-        box-sizing: border-box;   
-    }  
- button:hover {   
-        opacity: 0.7;   
-    }   
-  .cancelbtn {   
-        width: auto;   
-        padding: 10px 18px;  
-        margin: 10px 5px;  
-    }   
-        
-     
- .container {   
-        padding: 25px;   
-        background-color: lightblue;  
-    }   
- h1{
-    font-family:monospace;
-    color: blue;
- }
-</style>   
-</head>    
-<body>    
-    <center> <h1>Resend Verification Mail</h1> </center>   
-    <form action='/resendVerificationMail' method="POST">  
-        <div class="container">   
-            <label for="loginId">Email: </label>   
-            <input type="text" placeholder="Enter Email " name="loginId" required>  
-            <button type="submit">Submit</button>   
-        </div>   
-    </form>     
-    <script  src="https://unpkg.com/axios/dist/axios.min.js"> </script>
-    <script src="/browser.js"></script>
-</body>     
-</html> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resend Verification Mail</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .resend-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 360px;
+    padding: 30px;
+    text-align: left;
+  }
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    color: #555;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  button {
+    background-color: #4CAF50;
+    width: 100%;
+    color: white;
+    padding: 12px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+  <div class="resend-container">
+    <h1>Resend Verification Mail</h1>
+    <form action='/resendVerificationMail' method="POST">
+      <label for="loginId">Email:</label>
+      <input type="text" placeholder="Enter Email" name="loginId" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

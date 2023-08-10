@@ -8,6 +8,7 @@ const mongoDbSession = require("connect-mongodb-session")(session);
 const { isAuth } = require("./middlewares/AuthMiddleware");
 const { rateLimiting } = require("./middlewares/rateLimiting");
 const jwt = require("jsonwebtoken");
+require("dotenv").config()
 
 // file imports
 const {
